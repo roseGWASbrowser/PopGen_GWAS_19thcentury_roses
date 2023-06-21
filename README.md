@@ -11,7 +11,7 @@ Last update: 21/06/23 (under progress)
 
 ### 2/ Whole-genome sequences (from the raw sequencing to the final SNP set, see ./mapping_calling)
 
-Main softwares: bwa-mem2, picard & GATK4
+Main softwares: bwa-mem2, picard & GATK4 <br>
 For the reanalysis of publicly available raw sequncing reads, we downloaded the sequences using wget from the SRA archive (e.g. see *script_import_LaFrance.sh*). All other sequences were de novo sequenced and therefore directly downloaded from the sequencing facility. Then, we then used Trimmomatic (e.g. see *script_trimmomatic_LaFrance*). We then used fastqc and multiqc to check the quality of the sequencing data. Then, we used bwa-mem2 to map the paired-end reads, as well as the single-end reads after trimming (see *script_mapping_LaFrance.sh*, note that several samples available from SRA were sequenced with a SE strategy: the botanical roses from Hibrand Saint-Oyant and the Yellow Island cultivar). Mapping results from PE and SE reads were then merged with samtools and picard was then used to remove duplicates. <br>
 
 
