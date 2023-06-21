@@ -7,15 +7,15 @@ Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastell
 
 Last update: 21/06/23 (under progress) 
 
-### 1/ SNP array dataset (./SNParray)
+### 1/ SNP array dataset (see ./SNParray)
 
-### 2/ Whole-genome sequences from the raw sequencing to the final SNP set (./mapping_calling)
+### 2/ Whole-genome sequences (from the raw sequencing to the final SNP set, see ./mapping_calling)
 
-### 3/ Population structure, kinship and diversity estimates (./popgenomics)
+### 3/ Population structure, kinship and diversity estimates (see ./popgenomics)
 
-### 4/ GWAS analyses (./GWAS)
+### 4/ GWAS analyses (see ./GWAS)
 
-### 5/ Scripts and files to generate the main figures (./main_figures)
+### 5/ Scripts and files to generate the main figures (see ./main_figures)
 
-### 6/ Website (./website)
+### 6/ Website (see ./website)
 
