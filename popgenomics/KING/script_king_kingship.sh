@@ -1,0 +1,2 @@
+~/Software/KING/king -b rose32.jointvcf.clean.PASSonly.SNPonly.vcf.2pcsites.bed --fam rose32.jointvcf.clean.PASSonly.SNPonly.vcf.2pcsites.fam --bim rose32.jointvcf.clean.PASSonly.SNPonly.vcf.2pcsites.bim --related
+#~/Software/KING/king -b rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.bed --fam rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.fam --bim rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.bim --related
