@@ -4,4 +4,4 @@ But please check that this is not happening on your own inferences, if you want 
 
 To convert the vcf to faststructure with PLINK, see *./script_convertvcf_for_faststructure.sh*<br>
 To launch faststructure, see *./script_faststructure.sh*<br>
-To plot the results, see the R script *./script_R_generatefaststructureplots.R*<br>
+To plot the results, see the R script *./script_R_generatefaststructureplots.R* (the results are provided to redo the plot)<br>
