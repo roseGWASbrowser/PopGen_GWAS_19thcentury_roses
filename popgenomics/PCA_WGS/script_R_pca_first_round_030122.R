@@ -9,8 +9,8 @@ library(ape)
 # perform PCA
 setwd("/home/thibaultleroy/Rose/documents_transfert_autreordi/sequencing/first_round_calling/pca_first_round/")
 library("SNPRelate")
-#vcf.fn<-"rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.vcf" # finalVCF 0.0151 of all sites among 69,676,016 PASS sites (33,332,595 SNPs!)  subsampling: awk '$4 == "A" || $4 == "C" || $4 == "G" || $4 == "T" {print $0}' rose32.jointvcf.clean.PASSonly.varonly.vcf | awk '5 == "A" || $5 == "C" || $5 == "G" || $5 == "T" {print $0}' | awk 'BEGIN {srand()} !/^$/ { if (rand() <= .00151) print $0}' > rose32.jointvcf.clean.PASSonly.varonly.biallelic50k.vcf
-vcf.fn<-"rose32.jointvcf.clean.PASSonly.SNPonly.vcf.2pcsites.vcf" # finalVCF 2% of all sites among 33,332,595 SNPs!
+vcf.fn<-"rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.vcf" # finalVCF 0.0151 of all sites among 69,676,016 PASS sites (33,332,595 SNPs!)  subsampling: awk '$4 == "A" || $4 == "C" || $4 == "G" || $4 == "T" {print $0}' rose32.jointvcf.clean.PASSonly.varonly.vcf | awk '5 == "A" || $5 == "C" || $5 == "G" || $5 == "T" {print $0}' | awk 'BEGIN {srand()} !/^$/ { if (rand() <= .00151) print $0}' > rose32.jointvcf.clean.PASSonly.varonly.biallelic50k.vcf
+#vcf.fn<-"rose32.jointvcf.clean.PASSonly.SNPonly.vcf.2pcsites.vcf" # finalVCF 2% of all sites among 33,332,595 SNPs!
 snpgdsVCF2GDS(vcf.fn, "ccm.gds",  method="biallelic.only")
 genofile <- openfn.gds("ccm.gds")
 
