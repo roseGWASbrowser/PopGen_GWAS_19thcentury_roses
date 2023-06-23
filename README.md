@@ -5,8 +5,8 @@ This repository contains the scripts needed to redo the analyses done by Thibaul
 Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastellier A., Chameau J., Jeauffre J., Loubert T., Paramita S.N., Pernet A., Soufflet-Freslon A., Oghina-Pavie C., Foucher C., Hibrand-Saint Oyant L, Clotault J.
 *Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics*, bioRxiv
 
-Author: Thibault Leroy (thibault.leroy_at_inrae.fr)
-Last update: 23/06/23 (in progress) 
+Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
+Last update: 23/06/23 (in progress) <br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
