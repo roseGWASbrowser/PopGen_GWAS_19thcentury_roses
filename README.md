@@ -10,6 +10,8 @@ Last update: 23/06/23 (in progress) <br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
+In this section, we have made the raw data available (CEL files corresponding to three 96-well plates), as well as the final dataset after the filtering of the SNPs and the clone-correction (204 genotypes).
+
 ### 2/ Whole-genome sequences (from the raw sequencing to the final SNP set, see ./mapping_calling)
 
 Main softwares: bwa-mem2, picard & GATK4 <br> <br>
