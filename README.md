@@ -10,7 +10,7 @@ Last update: 23/06/23 (in progress) <br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
-In this section, we have made the raw data available (CEL files corresponding to three 96-well plates), as well as the final dataset after the filtering of the SNPs and the clone-correction (204 genotypes). The R codes to generate this matrix are also provided. In bried, we filtered the low accurate SNP based on the raw signal prior to the use of fitpoly (see *script_QC_filtering_renaming_before_fitPoly_270_samples.R*), before to launch fitpoly (*script_launch_genotyping_fitPoly_270samplesCARO.R*). Note that fitpoly was run on a specific computing cluster given the large computational requirements (here: 30 CPUs used). 
+In this section, we have made the raw data available (CEL files corresponding to three 96-well plates), as well as the final dataset after the filtering of the SNPs and the clone-correction (204 genotypes). The R codes to generate this matrix are also provided. In bried, we filtered the low accurate SNP based on the raw signal prior to the use of fitpoly (see *script_QC_filtering_renaming_before_fitPoly_270_samples.R*), before to launch fitpoly (*script_launch_genotyping_fitPoly_270samplesCARO.R*). Note that fitpoly was run on a specific computing cluster given the large computational requirements (here: 30 CPUs used). We then filtered polymorphic markers and investigated the ploidy (e.g. *script_diagnostic_ploidy_plot_270_perchromosome.R*)
 
 ### 2/ Whole-genome sequences (from the raw sequencing to the final SNP set, see ./mapping_calling)
 
