@@ -30,9 +30,11 @@ This section covers different analyses perform on both datasets, including the i
 
 ### 4/ GWAS analyses (see ./GWAS)
 
+The scripts needed for the GWAS analysis, as well as the R scripts to generate the circlize plots (except Fig.4, see below), are available in this subsection. <br>
+
 ### 5/ Scripts and files to generate the main figures (see ./main_figures)
 
-The R scripts - as well as the corresponding files containing the results - needed to generate the main figures of the article are made available on this subsection. 
+The R scripts - as well as the corresponding files containing the results - needed to generate the main figures of the article are made available on this subsection. <br>
 
 ### 6/ Website (see ./website)
 
