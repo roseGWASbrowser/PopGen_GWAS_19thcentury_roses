@@ -2,8 +2,8 @@
 
 This repository contains the scripts needed to redo the analyses done by Thibault Leroy et al. (preprint available on bioRxiv) to reconstruct the history of rose breeding during the 19th century, including the analysis of the SNP array dataset, the mapping and SNP calling of the whole-genome sequences, as well as all subsequent analyses and figures. Given the number of analyses performed, some scripts (and more broadly information) could be missing. Please send me an email.
 
-Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastellier A., Chameau J., Jeauffre J., Loubert T., Paramita S.N., Pernet A., Soufflet-Freslon A., Oghina-Pavie C., Foucher C., Hibrand-Saint Oyant L, Clotault J.
-*Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics*, bioRxiv
+<cite>Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastellier A., Chameau J., Jeauffre J., Loubert T., Paramita S.N., Pernet A., Soufflet-Freslon A., Oghina-Pavie C., Foucher C., Hibrand-Saint Oyant L, Clotault J.
+*Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics*, bioRxiv</cite>
 
 Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
 Last update: 23/06/23 (in progress) <br>
