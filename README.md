@@ -26,10 +26,12 @@ Thanks to this first round of analysis, we were able to generate an extended cat
 
 ### 3/ Population structure, kinship and diversity estimates (see ./popgenomics)
 
+Main softwares: fastStructure, KING <br> 
 This section covers different analyses perform on both datasets, including the inference of the population structure based on the SNP array and a subset of the WGS data, kinship analysis and local ancestry estimates based on the WGS data and ploidy level inferences. More detail is given within each directory (a dedicated README is available for each directory).<br>
 
 ### 4/ GWAS analyses (see ./GWAS)
 
+Main software: polyGWAS <br>
 The scripts needed for the GWAS analysis, as well as the R scripts to generate the circlize plots (except Fig.4, see below), are available in this subsection. <br>
 
 ### 5/ Scripts and files to generate the main figures (see ./main_figures)
