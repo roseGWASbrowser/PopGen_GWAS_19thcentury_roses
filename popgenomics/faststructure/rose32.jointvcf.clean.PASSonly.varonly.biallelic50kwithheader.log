@@ -1,0 +1,33 @@
+PLINK v2.00a3LM 64-bit Intel (17 Dec 2021)
+Options in effect:
+  --make-bed
+  --out rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader
+  --vcf rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.vcf
+
+Hostname: E11-66-12
+Working directory: /home/thibaultleroy/Rose/documents_transfert_autreordi/sequencing/first_round_calling
+Start time: Fri Jan  7 08:22:09 2022
+
+Random number seed: 1641540129
+32056 MiB RAM detected; reserving 16028 MiB for main workspace.
+Allocated 12021 MiB successfully, after larger attempt(s) failed.
+Using up to 8 compute threads.
+--vcf: 50369 variants scanned.
+--vcf:
+rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader-temporary.pgen +
+rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader-temporary.pvar.zst
++ rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader-temporary.psam
+written.
+32 samples (0 females, 0 males, 32 ambiguous; 32 founders) loaded from
+rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader-temporary.psam.
+50369 variants loaded from
+rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader-temporary.pvar.zst.
+Note: No phenotype data present.
+Writing rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.fam ...
+done.
+Writing rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.bim ...
+done.
+Writing rose32.jointvcf.clean.PASSonly.varonly.biallelic50kwithheader.bed ...
+done.
+
+End time: Fri Jan  7 08:22:09 2022
