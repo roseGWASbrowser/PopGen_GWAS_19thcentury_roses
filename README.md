@@ -24,6 +24,8 @@ Thanks to this first round of analysis, we were able to generate an extended cat
 
 ### 5/ Scripts and files to generate the main figures (see ./main_figures)
 
+The R scripts - as well as the corresponding files containing the results - needed to generate the main figures of the article are made available on this subsection. 
+
 ### 6/ Website (see ./website)
 
 This github account hosts the [rose GWAS browser](https://rosegwasbrowser.github.io/)!<br>
