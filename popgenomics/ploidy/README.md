@@ -1,1 +1,1 @@
-
+To empirically estimate the ploidy level of the 32 whole-genome sequenced individuals, we subsampled heterozygous sites with a coverage greater than 20 and then generate the density curve of the allele balance, see the R script. 
