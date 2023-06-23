@@ -32,7 +32,7 @@ This section covers different analyses perform on both datasets, including the i
 
 ### 4/ GWAS analyses (see ./GWAS)
 
-Main software: [GWASpoly](https://github.com/jendelman/GWASpoly),[circlize](https://jokergoo.github.io/circlize_book/book/) <br>
+Main software: [GWASpoly](https://github.com/jendelman/GWASpoly), [circlize](https://jokergoo.github.io/circlize_book/book/) <br>
 The scripts needed for the GWAS analysis, as well as the R scripts to generate the circlize plots (except Fig.4, see below), are available in this subsection. <br>
 
 ### 5/ Scripts and files to generate the main figures (see ./main_figures)
