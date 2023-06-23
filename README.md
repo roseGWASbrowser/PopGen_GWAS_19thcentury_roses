@@ -26,7 +26,7 @@ Thanks to this first round of analysis, we were able to generate an extended cat
 
 ### 3/ Population structure, kinship and diversity estimates (see ./popgenomics)
 
-This section covers different analyses, including the inference of the population structure based on the SNP array and the WGS data. More detail is given in specific README within each directory.<br>
+This section covers different analyses perform on both datasets, including the inference of the population structure based on the SNP array and a subset of the WGS data, kinship analysis and local ancestry estimates based on the WGS data and ploidy level inferences. More detail is given within each directory (a dedicated README).<br>
 
 ### 4/ GWAS analyses (see ./GWAS)
 
