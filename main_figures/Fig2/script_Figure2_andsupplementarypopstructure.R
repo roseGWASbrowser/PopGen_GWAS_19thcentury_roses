@@ -9,6 +9,7 @@ setwd("/home/thibaultleroy/Rose/Papier/Fig2/")
 #write.table(pca.cows$li,file="res_PCA_270genotypes.txt",sep="\t",quote=FALSE)
 
 pca_faststr=read.table("dataFigure2_211122_Petals_RecFlowering_Flagr_BlackSp.txt",h=T,sep = "\t")
+pca_faststr2=read.table("dataFigure2_211122_Petals_RecFlowering_Flagr_BlackSp_withPCASNPpruning.txt",h=T,sep = "\t")
 
 
 # Color code
@@ -25,7 +26,7 @@ colfunc <- colorRampPalette(c("red","lightpink2","deeppink4"))
 colfunc(7)
 
 
-# PCA group with names -> Supplementary
+# PCA group with names -> Supplementary BEFORE SNP PRUNING
 
 pdf("Figure2A_PCA_180623_withnames_blackbg.pdf",width = 12, height = 9)
 ggplot(pca_faststr,aes(x=Axis1,y=Axis2,colour=as.factor(genetic_group)))+geom_point(size=2.5)+
@@ -47,7 +48,7 @@ ggplot(pca_faststr,aes(x=Axis1,y=Axis2,colour=as.factor(genetic_group)))+geom_po
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the A
 dev.off()
 
-# PCA group without names -> Panel 1A
+# PCA group without names -> Panel 1A BEFORE SNP PRUNING
 
 align_legend <- function(p, hjust = 0.5)
 {
@@ -124,18 +125,162 @@ ggplot(pca_faststr,aes(x=Axis1,y=Axis2,colour=as.factor(genetic_group)))+geom_po
   labs(colour="Genetic Groups\n(Liorzou et al. 2016)",fill="Genetic Groups\n(Liorzou et al. 2016)")
 dev.off()
 
+
+
+
+
+# PCA group with names -> Supplementary AFTER SNP PRUNING
+
+pdf("Figure2A_PCA_180623_withnames_blackbg_SNPpruned130324_whitebg.pdf",width = 12, height = 9)
+ggplot(pca_faststr2,aes(x=Axis1_pruned,y=Axis2_pruned,colour=as.factor(genetic_group)))+geom_point(size=2.5)+
+  xlab("PC1 (21.4%)")+
+  ylab("PC2 (11.6%)")+
+  theme_bw()+
+  scale_colour_manual(values = cols)+
+  scale_fill_manual(values = cols)+
+  theme(plot.background = element_rect(fill = "white"),panel.background = element_rect(fill = "white"),legend.background = element_rect(fill = "white",color = "black"))+
+  theme(legend.text=element_text(color="black",size=10),legend.title=element_text(color="black",size=11))+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.line = element_line(colour = 'black', size = 1.25), axis.ticks = element_line(colour = 'black', size = 1.25), 
+        axis.text.x = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.5,face="plain"),  
+        axis.title.x = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.2,face="italic"),
+        axis.title.y = element_text(colour="black",size=16,angle=90,hjust=.5,vjust=.5,face="italic"))+
+  geom_label_repel(aes(label = factor(Name_simpl), fill = as.factor(genetic_group)), color = 'snow2', size = 1.75)+
+  labs(colour="Genetic Groups\n(Liorzou et al. 2016)",fill="Genetic Groups\n(Liorzou et al. 2016)")+
+  guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the A
+dev.off()
+
+# PCA group without names -> Panel 1A AFTER SNP PRUNING
+
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+  
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+  
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+    
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+library(cowplot)
+pdf("Figure2A_PCA_180623_blackbg_SNPpruned130324.pdf",width = 12, height = 9)
+p<- ggplot(pca_faststr2,aes(x=Axis1_pruned,y=Axis2_pruned,fill=as.factor(genetic_group)))+geom_point(size=6,shape=21,colour="white")+
+  xlab("PC1 (21.4%)")+
+  ylab("PC2 (11.6%)")+
+  theme_bw()+
+  scale_colour_manual(values = cols)+
+  scale_fill_manual(values = cols)+
+  theme(plot.background = element_rect(fill = "black"),panel.background = element_rect(fill = "black"),legend.background = element_rect(fill = "gray30",color = "white"),legend.key = element_rect(fill = "gray30"))+
+  theme(legend.text=element_text(color="white",size=20),legend.title=element_text(color="white",size=20),legend.spacing.x = unit(0.15 ,'cm'),legend.spacing.y = unit(0.05 ,'cm'),legend.box.spacing = unit(0.1 ,'cm'))+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "white"))+
+  theme(axis.line = element_line(colour = 'white', size = 1.25), axis.ticks = element_line(colour = 'white', size = 1.25), 
+        axis.text.x = element_text(colour="white",size=18,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="white",size=18,angle=0,hjust=.5,vjust=.5,face="plain"),  
+        axis.title.x = element_text(colour="white",size=20,angle=0,hjust=.5,vjust=.2,face="italic"),
+        axis.title.y = element_text(colour="white",size=20,angle=90,hjust=.5,vjust=.5,face="italic"))+
+  theme(legend.title.align = 0.5,legend.key.width = unit(15, 'mm'),
+        legend.direction = "vertical",
+        legend.box.just = "center")+
+  labs(colour="Genetic Groups\n(Liorzou et\nal. 2016)",fill="Genetic Groups\n(Liorzou et\nal. 2016)")+
+  guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the A
+ggdraw(align_legend(p, hjust = 0.5))
+dev.off()
+
+# white bg version
+pdf("Figure2A_PCA_211122_SNPpruned130324.pdf",width = 12, height = 9)
+ggplot(pca_faststr2,aes(x=Axis1_pruned,y=Axis2_pruned,colour=as.factor(genetic_group)))+geom_point(size=4)+
+  xlab("PC1 (21.4%)")+
+  ylab("PC2 (11.6%)")+
+  theme_bw()+
+  scale_colour_manual(values = cols)+
+  scale_fill_manual(values = cols)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.line = element_line(colour = 'black', size = 1.25), axis.ticks = element_line(colour = 'black', size = 1.25), 
+        axis.text.x = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),  
+        axis.title.x = element_text(colour="black",size=18,angle=0,hjust=.5,vjust=.2,face="italic"),
+        axis.title.y = element_text(colour="black",size=18,angle=90,hjust=.5,vjust=.5,face="italic"))+
+  labs(colour="Genetic Groups\n(Liorzou et al. 2016)",fill="Genetic Groups\n(Liorzou et al. 2016)")
+dev.off()
+
+# comparison
+
+pdf("Comparaison_SNPwithout_SNPpruned130324.pdf",width = 18, height = 7)
+plot1 <- ggplot(pca_faststr2,aes(x=Axis1,y=Axis1_pruned,colour=as.factor(genetic_group)))+geom_point(size=4)+
+  xlab("PC1 (all SNPs, 29.3%)")+
+  ylab("PC1 (pruned SNPs, 21.4%)")+
+  geom_abline(slope = 3.546e-01, intercept = -8.219e-11,lty=2,lwd=1.5)+
+  theme_bw()+
+  scale_colour_manual(values = cols)+
+  scale_fill_manual(values = cols)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.line = element_line(colour = 'black', size = 1.25), axis.ticks = element_line(colour = 'black', size = 1.25), 
+        axis.text.x = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),  
+        axis.title.x = element_text(colour="black",size=18,angle=0,hjust=.5,vjust=.2,face="italic"),
+        axis.title.y = element_text(colour="black",size=18,angle=90,hjust=.5,vjust=.5,face="italic"))
+
+plot2<- ggplot(pca_faststr2,aes(x=Axis2,y=Axis2_pruned,colour=as.factor(genetic_group)))+geom_point(size=4)+
+  xlab("PC2 (all SNPs, 10.6%)")+
+  ylab("PC2 (pruned SNPs, 11.6%)")+
+  geom_abline(slope = 3.862e-01, intercept = 6.248e-11,lty=2,lwd=1.5)+
+  theme_bw()+
+  scale_colour_manual(values = cols)+
+  scale_fill_manual(values = cols)+
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
+  theme(axis.line = element_line(colour = 'black', size = 1.25), axis.ticks = element_line(colour = 'black', size = 1.25), 
+        axis.text.x = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),
+        axis.text.y = element_text(colour="black",size=16,angle=0,hjust=.5,vjust=.5,face="plain"),  
+        axis.title.x = element_text(colour="black",size=18,angle=0,hjust=.5,vjust=.2,face="italic"),
+        axis.title.y = element_text(colour="black",size=18,angle=90,hjust=.5,vjust=.5,face="italic"))
+
+pushViewport(viewport(layout = grid.layout(1, 2)))
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+print(plot1, vp = vplayout(1, 1))
+print(plot2, vp = vplayout(1, 2))
+dev.off()
+
+
+
 ## 2B
 
 cols_restricted <- c("Ancient European" = "#000080", "Early European x Asian" = "#228B22", "Hybrid tea roses" = "#889F22", 
           "Ancient Asian" = "#EEB422", "Botanical" = "#FF0000")
 
 #PCA_1stround_filtered50kSNPs_061221_withmappingres_mod221122.txt # initiallement puis changé first par early European x Asian
-pca_summary=read.table("PCA_1stround_filtered50kSNPs_061221_withmappingres_mod180623.txt",header = TRUE,sep = "\t")
+pca_summary=read.table("PCA_1stround_filtered50kSNPs_061221_withmappingres_120324.txt",header = TRUE,sep = "\t")
 
-pdf("Figure2B_PCA_180623_blackbg_fullnames.pdf",width = 9, height = 9)
-ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID2))+geom_point(size=2.5)+
-  xlab("Axis 1 (10.9%)")+
-  ylab("Axis 3 (7.5%)")+
+pdf("Figure2B_PCA_120324_blackbg_fullnames.pdf",width = 9, height = 9)
+ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 1 (9.7%)")+
+  ylab("Axis 3 (6.3%)")+
+  #xlab("PC1 (10.9%)")+ # before SNP pruning
+  #ylab("PC3 (7.5%)")+# before SNP pruning
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -149,14 +294,16 @@ ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID2))+geom_point(size=2.5)+
         axis.title.y = element_text(colour="white",size=14,angle=90,hjust=.5,vjust=.5,face="italic"))+
   labs(colour="Groups",fill="Groups")+
   theme(legend.position='top') +
-  geom_label_repel(aes(label = factor(sampleID3),fill=groupID2), color = 'white', size = 3,segment.color = 'white')+
+  geom_label_repel(aes(label = factor(sampleID),fill=groupID), color = 'white', size = 3,segment.color = 'white')+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 dev.off()
 
-pdf("Figure2B_PCA_180623_blackbg_justnumbers.pdf",width = 9, height = 9)
-ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID2))+geom_point(size=2.5)+
-  xlab("PC1 (10.9%)")+
-  ylab("PC3 (7.5%)")+
+pdf("Figure2B_PCA_120324_blackbg_justnumbers.pdf",width = 9, height = 9)
+ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 1 (9.7%)")+
+  ylab("Axis 3 (6.3%)")+
+  #xlab("PC1 (10.9%)")+ # before SNP pruning
+  #ylab("PC3 (7.5%)")+# before SNP pruning
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -169,8 +316,8 @@ ggplot(pca_summary,aes(x=-(axis1),axis3,colour=groupID2))+geom_point(size=2.5)+
         axis.title.x = element_text(colour="white",size=18,angle=0,hjust=.5,vjust=.2,face="italic"),
         axis.title.y = element_text(colour="white",size=18,angle=90,hjust=.5,vjust=.5,face="italic"))+
   labs(colour="Groups",fill="Groups")+
-  theme(legend.position=c(0.45,0.88),legend.title=element_text(size=0), legend.text=element_text(size=20),legend.spacing.x = unit(0.15 ,'cm'),legend.spacing.y = unit(0.05 ,'cm'),legend.box.spacing = unit(0.1 ,'cm')) +
-  geom_label_repel(aes(label = factor(sampleID4),fill=groupID2), color = 'white', size = 7,segment.color = 'white')+
+  theme(legend.position=c(0.35,0.88),legend.title=element_text(size=0), legend.text=element_text(size=20),legend.spacing.x = unit(0.15 ,'cm'),legend.spacing.y = unit(0.05 ,'cm'),legend.box.spacing = unit(0.1 ,'cm')) +
+  geom_label_repel(aes(label = factor(sampleID4),fill=groupID), color = 'white', size = 7,segment.color = 'white')+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 dev.off()
 
@@ -178,9 +325,9 @@ dev.off()
 # white bg version for supplementary
 
 
-plotminorA <- ggplot(pca_summary,aes(x=axis1,axis2,colour=groupID2))+geom_point(size=2.5)+
-  xlab("Axis 1 (10.9%)")+
-  ylab("Axis 2 (8.9%)")+
+plotminorA <- ggplot(pca_summary,aes(x=axis1,axis2,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 1 (9.7%)")+
+  ylab("Axis 2 (8.2%)")+
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -191,13 +338,14 @@ plotminorA <- ggplot(pca_summary,aes(x=axis1,axis2,colour=groupID2))+geom_point(
         axis.title.x = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.2,face="italic"),
         axis.title.y = element_text(colour="black",size=14,angle=90,hjust=.5,vjust=.5,face="italic"))+
   theme(legend.position="none") +
-  geom_label_repel(aes(label = factor(sampleID3),fill=groupID2), color = 'white', size = 3,segment.color = 'black')+
+  geom_label_repel(aes(label = factor(sampleID4),fill=groupID), color = 'white', size = 3,segment.color = 'black')+
   labs(col="",fill="")+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 
-plotminorB <- ggplot(pca_summary,aes(x=axis1,axis4,colour=groupID2))+geom_point(size=2.5)+
-  xlab("Axis 1 (10.9%)")+
-  ylab("Axis 4 (7.2%)")+
+plotminorB <- ggplot(pca_summary,aes(x=axis1,axis4,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 1 (9.7%)")+
+  ylab("Axis 4 (5.9%)")+
+  
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -208,13 +356,13 @@ plotminorB <- ggplot(pca_summary,aes(x=axis1,axis4,colour=groupID2))+geom_point(
         axis.title.x = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.2,face="italic"),
         axis.title.y = element_text(colour="black",size=14,angle=90,hjust=.5,vjust=.5,face="italic"))+
   theme(legend.position="none") +
-  geom_label_repel(aes(label = factor(sampleID3),fill=groupID2), color = 'white', size = 3,segment.color = 'black')+
+  geom_label_repel(aes(label = factor(sampleID4),fill=groupID), color = 'white', size = 3,segment.color = 'black')+
   labs(col="",fill="")+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 
-plotminorC <- ggplot(pca_summary,aes(x=axis2,axis3,colour=groupID2))+geom_point(size=2.5)+
-  xlab("Axis 2 (8.9%)")+
-  ylab("Axis 3 (7.5%)")+
+plotminorC <- ggplot(pca_summary,aes(x=axis2,axis3,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 2 (7.2%)")+
+  ylab("Axis 3 (6.3%)")+
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -225,14 +373,14 @@ plotminorC <- ggplot(pca_summary,aes(x=axis2,axis3,colour=groupID2))+geom_point(
         axis.title.x = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.2,face="italic"),
         axis.title.y = element_text(colour="black",size=14,angle=90,hjust=.5,vjust=.5,face="italic"))+
   theme(legend.position="none") +
-  geom_label_repel(aes(label = factor(sampleID3),fill=groupID2), color = 'white', size = 3,segment.color = 'black')+
+  geom_label_repel(aes(label = factor(sampleID4),fill=groupID), color = 'white', size = 3,segment.color = 'black')+
   labs(col="",fill="")+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 
 
-plotmain <- ggplot(pca_summary,aes(x=axis1,axis3,colour=groupID2))+geom_point(size=2.5)+
-  xlab("Axis 1 (10.9%)")+
-  ylab("Axis 3 (7.5%)")+
+plotmain <- ggplot(pca_summary,aes(x=axis1,axis3,colour=groupID))+geom_point(size=2.5)+
+  xlab("Axis 1 (9.7%)")+
+  ylab("Axis 3 (6.3%)")+
   scale_colour_manual(values = cols_restricted )+
   scale_fill_manual(values = cols_restricted )+
   theme_bw()+
@@ -243,11 +391,11 @@ plotmain <- ggplot(pca_summary,aes(x=axis1,axis3,colour=groupID2))+geom_point(si
         axis.title.x = element_text(colour="black",size=14,angle=0,hjust=.5,vjust=.2,face="italic"),
         axis.title.y = element_text(colour="black",size=14,angle=90,hjust=.5,vjust=.5,face="italic"))+
   theme(legend.position='top') +
-  geom_label_repel(aes(label = factor(sampleID3),fill=groupID2), color = 'white', size = 3,segment.color = 'black')+
+  geom_label_repel(aes(label = factor(sampleID4),fill=groupID), color = 'white', size = 3,segment.color = 'black')+
   labs(col="",fill="")+
   guides(fill = guide_legend(override.aes = aes(label = ""))) # to remove the "a" in the legend
 
-pdf("SupFigureX_PCA_WGS_180623.pdf",width = 16, height = 12)
+pdf("SupFigureX_PCA_WGS_afterSNPpruning_130324.pdf",width = 16, height = 12)
 pushViewport(viewport(layout = grid.layout(3, 3)))
 vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
 print(plotmain, vp = vplayout(1:3, 1:2))
@@ -350,13 +498,13 @@ library(dplyr)
 sumstatspiwithoutchr0 <- sumstatspiwithoutchr0 %>%
   mutate( group=factor(group,levels=c("All accessions","Hybrid tea roses","Early European x Asian","Ancient Asian","Ancient European")) )
 
-pdf("Figure2D_diversity_060523.pdf",width = 9, height = 9)
+pdf("Figure2D_diversity_120324.pdf",width = 9, height = 9)
 ggplot(sumstatspiwithoutchr0, aes(x=group, y=pi_site)) +
-  geom_jitter(aes(color=sumstatspiwithoutchr0$chr),shape=20, position=position_jitter(0.40),cex=0.5)+#geom_jitter(shape=20, position=position_jitter(0.3))+
-  geom_hline(yintercept = 0.0167325040,color="#000080",linetype="solid",lwd=1.1)+ # median values
-  geom_hline(yintercept = 0.0120770664,color="#EEB422",linetype="solid",lwd=1.1)+
-  geom_hline(yintercept = 0.0154966073,color="#228B22",linetype="solid",lwd=1.1)+
-  geom_hline(yintercept = 0.0123191425+0.00005,color="#889F22",linetype="solid",lwd=1.1)+ #very slight shift to increase the readability
+  # 12/03/24: no dots #geom_jitter(aes(color=sumstatspiwithoutchr0$chr),shape=20, position=position_jitter(0.40),cex=0.5)+#geom_jitter(shape=20, position=position_jitter(0.3))+
+  geom_hline(yintercept = 0.0167325040,color="#000080",linetype="longdash",lwd=1.1)+ # median values
+  geom_hline(yintercept = 0.0120770664,color="#EEB422",linetype="longdash",lwd=1.1)+
+  geom_hline(yintercept = 0.0154966073,color="#228B22",linetype="longdash",lwd=1.1)+
+  geom_hline(yintercept = 0.0123191425+0.00005,color="#889F22",linetype="longdash",lwd=1.1,lty=2)+ #very slight shift to increase the readability
   geom_violin(alpha=0.5,color="white")+
   geom_boxplot(width=0.1,outlier.size=0,outlier.shape = NA,alpha=0.5,lwd=1.2,color=c("black","#889F22","#228B22","#EEB422","#000080"))+
   #geom_dotplot(binaxis='y', stackdir='center', dotsize=0.7,aes(fill=pinpis$Taxa))+
