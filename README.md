@@ -4,7 +4,7 @@ This repository contains the scripts needed to redo the analyses done by Thibaul
 
 ```
 Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastellier A., Chameau J., Jeauffre J., Loubert T., Paramita S.N., Pernet A., Soufflet-Freslon A., Oghina-Pavie C., Foucher C., Hibrand-Saint Oyant L, Clotault J.
-*Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics*, bioRxiv 2023.06.22.546162 (last update (v2): April 07, 2024); doi: https://doi.org/10.1101/2023.06.22.546162
+Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics, bioRxiv 2023.06.22.546162 (last update (v2): April 07, 2024); doi: https://doi.org/10.1101/2023.06.22.546162
 ```
 <br>
 Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
