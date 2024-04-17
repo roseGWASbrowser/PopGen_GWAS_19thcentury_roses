@@ -8,7 +8,7 @@ Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastell
 ```
 <br>
 Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
-Last update: 23/06/23 (in progress) <br><br>
+Last update: 17/04/24 (in progress) <br><br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
