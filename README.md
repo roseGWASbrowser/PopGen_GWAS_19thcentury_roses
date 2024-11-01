@@ -8,7 +8,7 @@ Dark side of the honeymoon: reconstructing the Asian x European rose breeding hi
 ```
 <br>
 Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
-Last update: 17/04/24 (in progress) <br><br>
+Last update: 01/11/24 (in progress) <br><br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
@@ -33,7 +33,8 @@ This section covers different analyses perform on both datasets, including the i
 ### 4/ GWAS analyses (see ./GWAS)
 
 Main software: [GWASpoly](https://github.com/jendelman/GWASpoly), [circlize](https://jokergoo.github.io/circlize_book/book/) <br>
-The scripts needed for the GWAS analysis, as well as the R scripts to generate the circlize plots (except Fig.4, see below), are available in this subsection. We used the R script *1_script_PCA_PCOA_on_markers_204cc_tetra_TL111021.R* to first filter the SNP set and keep only informative SNPs. Then, we used GWASpoly to perform the GWAS analysis *2_script_test_GWAS_poly_204cc_CARO_121021.R*. This latter script requires the genetic and phenotypic data, which corresponds to the TableS1 file and the Table S2 files. Then, we considered a series of R scripts to generate the circlize plots that are shown on the webste, see the section "6/ Website" below. <br>
+The scripts needed for the GWAS analysis, as well as the R scripts to generate the circlize plots (except Fig.4, see below), are available in this subsection. We used the R script *1_script_PCA_PCOA_on_markers_204cc_tetra_TL111021.R* to first filter the SNP set and keep only informative SNPs. Then, we used GWASpoly to perform the GWAS analysis *2_script_test_GWAS_poly_204cc_CARO_121021.R*. This latter script requires the genetic and phenotypic data, which corresponds to the TableS1 file and the Table S2 files. Then, we considered a series of R scripts to generate the circlize plots that are shown on the webste, see the section "6/ Website" below. <br><br>
+Importantly, this directory contains also all the results of our GWAS, including linear Manhattan plots, qqplots and raw files used to generate the circlize plots shown on the website (p-values, q-values, etc): see ./GWAS/ALL_RESULTS_GWAS/ . Concretely, the organization of result directories mirrors the structure of the website making it easy to locate the zip files. These zip files contain three types of data (Manhattan plots, qqplots and raw files), organized into three separate folders. For any questions regarding the results, please send me an email. <br>
 
 ### 5/ Scripts and files to generate the main figures (see ./main_figures)
 
