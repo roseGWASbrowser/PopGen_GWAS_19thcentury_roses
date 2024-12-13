@@ -6,9 +6,10 @@ This repository contains the scripts needed to redo the analyses done by Thibaul
 Preprint: Leroy T., Albert E., Thouroude T., Baudino S., Caissard J-C., Chastellier A., Chameau J., Jeauffre J., Loubert T., Paramita S.N., Pernet A., Soufflet-Freslon A., Oghina-Pavie C., Foucher C., Hibrand-Saint Oyant L, Clotault J.
 Dark side of the honeymoon: reconstructing the Asian x European rose breeding history through the lens of genomics, bioRxiv 2023.06.22.546162 (last update (v2): April 07, 2024); doi: https://doi.org/10.1101/2023.06.22.546162
 ```
+Dedication: This work is dedicated to the memory of our colleague, Laurence Hibrand-Saint Oyant, who passed away in November 2024 (see the Supporting Information of the latest bioRxiv version).<br>
 <br>
 Author: Thibault Leroy (thibault.leroy_at_inrae.fr)<br>
-Last update: 01/11/24 (in progress) <br><br>
+Last update: 13/12/24 <br><br>
 
 ### 1/ SNP array dataset (see ./SNParray)
 
