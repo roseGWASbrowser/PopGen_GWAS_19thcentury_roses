@@ -30,7 +30,7 @@ Thanks to this first round of analysis, we were able to generate an extended cat
 
 Main softwares: [KING](https://www.kingrelatedness.com/), [fastStructure](https://github.com/rajanil/fastStructure)  <br> 
 This section covers different analyses perform on both datasets, including the inference of the population structure based on the SNP array and a subset of the WGS data*, kinship analysis and local ancestry estimates based on the WGS data and ploidy level inferences. More detail is given within each directory (a dedicated README is available for each directory).<br>
-This section also includes the PCA generated with poolFstat based on allele counts (i.e. PCA with no ploidy assumption, for details see ./popgenomics/PCA_WGS/Poolfstat_PCA_counts/)<br>
+This section also includes the PCA generated with the R package [poolfstat](https://cran.r-project.org/web/packages/poolfstat/index.html) based on allele counts (i.e. PCA with no ploidy assumption, for details see ./popgenomics/PCA_WGS/Poolfstat_PCA_counts/)<br>
 
 ### 4/ GWAS analyses (see ./GWAS)
 
